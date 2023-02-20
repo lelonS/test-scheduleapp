@@ -7,5 +7,5 @@ Feature: Go to today's date
         Given I am logged in as an admin
         And I am on the homepage
         When I scroll to the bottom of the page
-        And I click on the button "Gå till idag"
+        And I click on the button Go to today-button
         Then the calendar should go back to today's date
