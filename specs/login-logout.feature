@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login and logout
 
     Scenario: Correct login information
         Given I am on the login page
@@ -20,3 +20,8 @@ Feature: Login
         And I enter "abc123" as the password
         And I press the submit button
         Then the email input should be invalid
+
+    Scenario: Logout from the homepage
+        Given I am on the homepage
+        When I press the button with the text "Logout"
+        Then I should be on the login page
