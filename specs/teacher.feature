@@ -26,5 +26,22 @@ Feature: Manage teachers
         Then the first row of the tbody with class "datagrid-body" contains "Test", "Testsson" and "TT"
 
     Scenario: Edit a teacher
+        Given I am on the page "/admin/#/teachers/"
+        When I click on the span with data-field "id"
+        And I click on the first edit button
+        And I fill in input id "firstname" with "Test2"
+        And I fill in input id "lastname" with "Testsson2"
+        And I fill in input id "initials" with "TT2"
+        And I click on the button with aria-label "Save"
+        Then I get sent to the page "/admin/#/teachers"
+        When I click on the button with aria-label "Refresh"
+        Then the first row of the tbody with class "datagrid-body" contains "Test2", "Testsson2" and "TT2"
 
     Scenario: Remove a teacher
+        Given I am on the page "/admin/#/teachers/"
+        When I click on the span with data-field "id"
+        And I click on the first edit button
+        And I click on the button with aria-label "Delete"
+        Then I get sent to the page "/admin/#/teachers"
+        When I click on the button with aria-label "Refresh"
+        Then the first row of the tbody with class "datagrid-body" does not contain "Test2", "Testsson2" and "TT2"
