@@ -1,7 +1,5 @@
 Feature: Manage teachers
 
-    Description
-
     Scenario: Click on Create button
         Given I am on the page "/admin/#/teachers"
         When I click on the link with aria-label "Create"
