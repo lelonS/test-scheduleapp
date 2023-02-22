@@ -9,4 +9,5 @@ Feature: Go to today's date
         When I scroll to the bottom of the page
         And I click on the button with id "goToToday"
         Then the calendar should go back to today's date
+
         
