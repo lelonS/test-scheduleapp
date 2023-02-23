@@ -19,7 +19,9 @@ When('I click on the link with aria-label {string}', (labelText) => {
 });
 
 When('I fill in input id {string} with {string}', (id, text) => {
-  cy.get('input#' + id).type(text);
+  cy.get('input#' + id)
+    .clear()
+    .type(text);
 });
 
 When('I click on the div with id {string}', (id) => {
@@ -51,10 +53,11 @@ Then('the first row of the tbody with class {string} contains {string}, {string}
 
 When('I click on the first edit button', () => {
   // Click on the first <a> with aria-label "Edit"
-  cy.get('a[aria-label="Edit"]').first().click();
+  cy.get('a[aria-label="Edit"]').first().click({ force: true });
 });
 
 Then('the first row of the tbody with class {string} does not contain {string}, {string} and {string}', (tbodyClass, a, b, c) => {
+  cy.wait(500);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', a);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', b);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', c);

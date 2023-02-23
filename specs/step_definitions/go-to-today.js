@@ -9,6 +9,6 @@ When('I click on the button with id {string}', (a) => {
 });
 
 Then('the calendar goes back to todays date', () => {
-  cy.get('tr[class="today"]')
+  cy.get('tr.today')
     .should('be.visible');
 });
