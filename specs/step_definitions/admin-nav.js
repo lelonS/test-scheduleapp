@@ -21,7 +21,8 @@ When('I click the button with the text {string}', (text) => {
 });
 
 Then('I get sent to the page {string}', (urlEnd) => {
-  cy.url().should('include', urlEnd);
+  // Check end of url with regex but ignore the last / if it exists
+  cy.url().should('match', new RegExp(urlEnd + '(\/)?$'));
 });
 
 Given('I am on the url {string}', (urlEnd) => {
