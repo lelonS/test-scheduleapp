@@ -6,6 +6,9 @@ const baseUrl = require('./baseUrl.js');
 
 module.exports = defineConfig(
   {
+    env: {
+      waitTimeMs: 1000
+    },
     e2e:
     {
       specPattern: '**/*.feature',

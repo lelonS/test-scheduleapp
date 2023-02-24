@@ -1,4 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+const waitTime = Cypress.env('waitTimeMs');
 
 Given('I am on the page {string}', (urlEnd) => {
   // Login
@@ -11,7 +12,7 @@ Given('I am on the page {string}', (urlEnd) => {
   cy.visit(urlEnd);
 
   // Wait for the page to load
-  cy.wait(1000);
+  cy.wait(waitTime);
 });
 
 When('I click on the link with aria-label {string}', (labelText) => {
@@ -42,7 +43,7 @@ When('I click on the button with aria-label {string}', (labelText) => {
 
 When('I click on the span with data-field {string}', (fieldText) => {
   cy.get('span[data-field="' + fieldText + '"]').click();
-  cy.wait(1000);
+  cy.wait(waitTime);
 });
 
 Then('the first row of the tbody with class {string} contains {string}, {string} and {string}', (tbodyClass, a, b, c) => {
@@ -57,7 +58,7 @@ When('I click on the first edit button', () => {
 });
 
 Then('the first row of the tbody with class {string} does not contain {string}, {string} and {string}', (tbodyClass, a, b, c) => {
-  cy.wait(500);
+  cy.wait(waitTime);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', a);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', b);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', c);

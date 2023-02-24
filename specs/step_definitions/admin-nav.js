@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-
+const waitTime = Cypress.env('waitTimeMs');
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from failing the test if there is an uncaught exception
   return false
@@ -35,7 +35,7 @@ Given('I am on the url {string}', (urlEnd) => {
   cy.visit(urlEnd);
 
   // Wait for the page to load
-  cy.wait(1000);
+  cy.wait(waitTime);
 
 });
 
