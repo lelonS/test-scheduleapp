@@ -17,7 +17,8 @@ Feature: Manage schools
     Scenario: Edit a school
         Given I am on the page "/admin/#/schools"
         When I click on the span with data-field "id"
-        And I click on the first edit button
+        Then the first row of the tbody with class "datagrid-body" contains "Testskola" and "Ts"
+        When I click on the first edit button
         And I fill in input id "name" with "Testskola2"
         And I fill in input id "shortName" with "Ts2"
         And I click on the button with aria-label "Save"
@@ -28,7 +29,8 @@ Feature: Manage schools
     Scenario: Remove a school
         Given I am on the page "/admin/#/schools"
         When I click on the span with data-field "id"
-        And I click on the first edit button
+        Then the first row of the tbody with class "datagrid-body" contains "Testskola2" and "Ts2"
+        When I click on the first edit button
         And I click on the button with aria-label "Delete"
         Then I get sent to the page "/admin/#/schools"
         When I click on the button with aria-label "Refresh"

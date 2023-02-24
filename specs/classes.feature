@@ -26,7 +26,8 @@ Feature: Manage classes
     Scenario: Edit a class
         Given I am on the page "/admin/#/classes/"
         When I click on the span with data-field "id"
-        And I click on the first edit button
+        Then the first row of the tbody with class "datagrid-body" contains "Test Class", "TCL" and "https://www.test.com"
+        When I click on the first edit button
         And I fill in input id "name" with "Test Class2"
         And I fill in input id "shortName" with "TCL2"
         And I fill in input id "blog" with "https://www.test2.com"
@@ -38,7 +39,8 @@ Feature: Manage classes
     Scenario: Remove a class
         Given I am on the page "/admin/#/classes/"
         When I click on the span with data-field "id"
-        And I click on the first edit button
+        Then the first row of the tbody with class "datagrid-body" contains "Test Class2", "TCL2" and "https://www.test2.com"
+        When I click on the first edit button
         And I click on the button with aria-label "Delete"
         Then I get sent to the page "/admin/#/classes"
         When I click on the button with aria-label "Refresh"
