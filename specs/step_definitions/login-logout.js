@@ -17,11 +17,15 @@ When('I click the submit button', () => {
 });
 
 Then('I get sent to the homepage', () => {
-  cy.url().should('include', '/');
+  // checks if url ends with base url
+  cy.url().should('match', new RegExp(Cypress.config().baseUrl + '(\/)?$'));
+
+
 });
 
 Then('I stay on the page {string}', (urlEnd) => {
-  cy.url().should('include', urlEnd);
+  // Check end of url with regex but ignore the last / if it exists
+  cy.url().should('match', new RegExp(urlEnd + '(\/)?$'));
 });
 
 

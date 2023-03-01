@@ -47,6 +47,7 @@ When('I click on the span with data-field {string}', (fieldText) => {
 });
 
 Then('the first row of the tbody with class {string} contains {string}, {string} and {string}', (tbodyClass, a, b, c) => {
+  cy.wait(waitTime);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', a);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', b);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', c);
