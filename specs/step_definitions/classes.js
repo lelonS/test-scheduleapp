@@ -43,10 +43,10 @@ When('I click on the button with aria-label {string}', (labelText) => {
 
 When('I click on the span with data-field {string}', (fieldText) => {
   cy.get('span[data-field="' + fieldText + '"]').click();
-  cy.wait(waitTime);
 });
 
 Then('the first row of the tbody with class {string} contains {string}, {string} and {string}', (tbodyClass, a, b, c) => {
+  cy.wait(waitTime * 2);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', a);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', b);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('contain', c);
@@ -58,7 +58,7 @@ When('I click on the first edit button', () => {
 });
 
 Then('the first row of the tbody with class {string} does not contain {string}, {string} and {string}', (tbodyClass, a, b, c) => {
-  cy.wait(waitTime);
+  cy.wait(waitTime * 2);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', a);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', b);
   cy.get('tbody.' + tbodyClass + ' tr').first().should('not.contain', c);
